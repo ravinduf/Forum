@@ -1,0 +1,9 @@
+{% extends 'forum/base.html' %}
+
+{% block content %}
+    {{question}}
+    <br>
+    {% for answer in question.Answer.all %}
+        {{answer.Answer|linebreaks}}
+    {% endfor %}
+{% endblock %}
