@@ -11,3 +11,4 @@ class Question(models.Model):
 
     def vote(self):
         self.Votes += 1
+        
