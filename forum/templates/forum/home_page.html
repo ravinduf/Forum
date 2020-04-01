@@ -1,0 +1,10 @@
+{% extends 'forum/base.html' %}
+{% block content %}
+
+{% for question in questions %}
+    {{question}}
+    {{question.added_date}}
+    <br>
+{% endfor %}
+
+{% endblock %}
