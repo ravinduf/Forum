@@ -9,6 +9,9 @@
     <div class="answers">
     {% for answer in question.answer.all %}
         {{answer.answer|linebreaks}}
+
+    {% empty %}
+        <p>No answers here yet </p>
     {% endfor %}
     </div>
 </div>
