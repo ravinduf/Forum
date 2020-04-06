@@ -14,3 +14,12 @@ p{
     font-family: 'Gotu', sans-serif;;
 }
 
+.answers{
+    font-family: 'Gotu', sans-serif;
+    margin-left: 30px; 
+}
+
+.question{
+    font-family: 'Gotu', sans-serif;
+    font-size: 30px;
+}

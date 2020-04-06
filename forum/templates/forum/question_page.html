@@ -1,10 +1,15 @@
 {% extends 'forum/base.html' %}
 
 {% block content %}
-    {{question}}
+<div class="container-fluid">
+    <p class="question">{{question}}</p>
     <br>
     <br>
+    <p>answers for the question are</p>
+    <div class="answers">
     {% for answer in question.answer.all %}
         {{answer.answer|linebreaks}}
     {% endfor %}
+    </div>
+</div>
 {% endblock %}
