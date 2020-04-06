@@ -2,7 +2,7 @@
 {% block content %}
 
 {% for question in questions %}
-    {{question.Author}}
+    {{question.author}}
     <a href="{% url 'question_details' pk=question.pk %}">{{question}}</a>
     {{question.added_date}}
     
