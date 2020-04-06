@@ -1,18 +1,29 @@
 {% extends 'forum/base.html' %}
 
 {% block content %}
-<div class="container-fluid">
+<div class = "container-fluid">
     <p class="question">{{question}}</p>
-    <br>
-    <br>
+    <br><br>
+
+
     <p>answers for the question are</p>
-    <div class="answers">
+
+    <div class = "answers">
     {% for answer in question.answer.all %}
         {{answer.answer|linebreaks}}
 
     {% empty %}
         <p>No answers here yet </p>
     {% endfor %}
+
     </div>
+
+</div>
+
+<div class = "container">
+    <form method = "POST" action = "/">{% csrf_token %}
+        {{ form.as_ul}}
+        <button class = "btn btn-default" type = "submit">Submit</button>
+    </form>
 </div>
 {% endblock %}

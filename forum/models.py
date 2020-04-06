@@ -26,3 +26,6 @@ class answer(models.Model):
     
     def vote(self):
         self.Votes += 1
+
+    def addTime(self):
+        self.added_date = timezone.now()
