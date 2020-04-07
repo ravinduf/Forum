@@ -14,6 +14,9 @@ class Question(models.Model):
     def vote(self):
         self.Votes += 1
 
+    def addTime(self):
+        self.added_date = timezone.now()
+
 class answer(models.Model):
     question = models.ForeignKey('forum.Question' ,on_delete = models.CASCADE, related_name = 'answer')
     author = models.CharField(max_length=50)

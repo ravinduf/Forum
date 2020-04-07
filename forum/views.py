@@ -37,3 +37,17 @@ def subVote(request,pk):
     question.votes -= 1
     question.save()
     return redirect('question_details', pk = question.pk)
+
+def addQuestion(request):
+    if request.method == 'POST':
+        form = questionForm(request.POST)
+        if form.is_valid():
+            question = form.save(commit = False)
+            question.author = request.user
+            question.addTime()
+            question.save()
+            return redirect('/')
+    
+    else:
+        form = questionForm()
+        return render(request, 'forum/add_question.html',{'form' : form})

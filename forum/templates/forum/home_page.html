@@ -1,6 +1,7 @@
 {% extends 'forum/base.html' %}
 {% block content %}
 
+<a href="{% url 'addQuestion' %}">ask question</a>
 <div class="container">
     {% for question in questions %}
         <p>
