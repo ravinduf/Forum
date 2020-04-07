@@ -1,8 +1,19 @@
 {% extends 'forum/base.html' %}
 
 {% block content %}
-<div class = "container-fluid">
-    <p class="question">{{question}}</p>
+<div class = "container-fluid ">
+    <div class = "row ">
+        <div class = "col-2" id="votes_col_div">
+            <div id ="votes_div">
+                <a href="{% url 'addVote' pk=question.pk %}"> <span class="fas fa-caret-up"></span><br></a>
+                <span id="votes">{{ question.votes }}<br></span>
+                <a href="{% url 'subVote' pk=question.pk %}"> <span class="fas fa-caret-down"></span><br></a>
+            </div>
+        </div>
+        <div class = "col-8">
+            <p class="question">{{question}}</p>
+        </div>
+    </div>
     <br><br>
 
 
