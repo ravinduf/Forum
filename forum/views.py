@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
 from .models import *
 from .forms import *
 # Create your views here.
@@ -20,7 +20,7 @@ def question_info(request, pk):
             answer.question = question
             answer.addTime()
             answer.save()
-            return redirect('/')
+            return HttpResponseRedirect("")
         else:
             return HttpResponse('hello world')
     return render(request, 'forum/question_page.html',{ 'question': question , 'form': form} )
