@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404,redirect
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
 from .models import *
 from .forms import *
 # Create your views here.
@@ -14,8 +15,12 @@ def question_info(request, pk):
     if request.method == 'POST':
         form = answerForm(request.POST)
         if form.is_valid():
-            form.save()
-            answer = answer.objects.all().last()
+            answer = form.save(commit=False)
+            answer.author = request.user
+            answer.question = question
             answer.addTime()
+            answer.save()
             return redirect('/')
+        else:
+            return HttpResponse('hello world')
     return render(request, 'forum/question_page.html',{ 'question': question , 'form': form} )

@@ -10,6 +10,7 @@
 
     <div class = "answers">
     {% for answer in question.answer.all %}
+        <b>{{answer.author}}</b>
         {{answer.answer|linebreaks}}
 
     {% empty %}
@@ -19,11 +20,13 @@
     </div>
 
 </div>
-
+ <br>
+ <br>
+ <br>
 <div class = "container">
-    <form method = "POST" action = "/">{% csrf_token %}
-        {{ form.as_ul}}
-        <button class = "btn btn-default" type = "submit">Submit</button>
+    <form method = "POST" >{% csrf_token %}
+        {{ form.answer}}
+        <button class = "btn btn-primary" type = "submit">Submit</button>
     </form>
 </div>
 {% endblock %}

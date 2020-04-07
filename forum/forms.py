@@ -7,4 +7,4 @@ class answerForm(forms.ModelForm):
 
     class Meta:
         model = answer
-        fields = ('author','answer')
+        fields = ('answer',)
