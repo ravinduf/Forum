@@ -13,8 +13,14 @@
 <Body>
     <div class="container-fluid p-5 bg-dark text-white" id="header">
     <h1>My Forum</h1>
-    <span class="ask_question_span"><button class="btn btn-primary"><a href="{% url 'addQuestion' %}">ask question</a></button></span>
-    </div>
+    <span class="ask_question_span">
+    {% if user.is_authenticated == False %}
+        <a href="{% url 'login' %}"><button class="btn btn-info">login</button></a>
+    {% else %}
+        <a href="{% url 'addQuestion' %}"><button class="btn btn-primary ">ask question</button></a>
+    {% endif %}
+    </span>
+</div>
 
     <br>
     <br>
