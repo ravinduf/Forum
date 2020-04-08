@@ -36,6 +36,19 @@ p{
     text-align: left;
     font-size: 30px;
     right: 30px;
-
+    
 }
 
+#header{
+    position: relative;
+}
+
+.ask_question_span{
+    position: absolute;
+    right: 50px;
+    bottom: 20px;
+}
+
+.ask_question_span a{
+    color: white;
+}
