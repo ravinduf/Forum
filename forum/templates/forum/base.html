@@ -16,6 +16,7 @@
     <span class="ask_question_span">
     {% if user.is_authenticated == False %}
         <a href="{% url 'login' %}"><button class="btn btn-info">login</button></a>
+        <a href="{% url 'register' %}"><button class="btn btn-info">register</button></a>
     {% else %}
         <a href="{% url 'addQuestion' %}"><button class="btn btn-primary ">ask question</button></a>
         <a href="{% url 'logout'%}"><button class="btn btn-info">Logout</button></a>
