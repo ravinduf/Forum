@@ -18,6 +18,7 @@
         <a href="{% url 'login' %}"><button class="btn btn-info">login</button></a>
     {% else %}
         <a href="{% url 'addQuestion' %}"><button class="btn btn-primary ">ask question</button></a>
+        <a href="{% url 'logout'%}"><button class="btn btn-info">Logout</button></a>
     {% endif %}
     </span>
 </div>
