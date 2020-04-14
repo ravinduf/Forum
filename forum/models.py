@@ -4,7 +4,7 @@ from django.utils import timezone
 # Create your models here.
 class Voter(models.Model):
     name = models.CharField(max_length = 50)
-    vote_status = models.BooleanField() #True for upcote and False for downvote 
+    vote_status = models.BooleanField(blank = True, null = True) #True for upcote and False for downvote 
     def __str__(self):
         return self.name
         
