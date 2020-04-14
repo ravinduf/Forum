@@ -3,15 +3,11 @@ from django.conf import settings
 from django.utils import timezone
 # Create your models here.
 
-        
-
 class Question(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL ,on_delete = models.CASCADE)
     question = models.TextField()
-    votes = models.SmallIntegerField(default = 0)
+    votes_count = models.SmallIntegerField(default = 0)
     added_date = models.DateTimeField()
-    
-    
     
     def __str__(self):
         return self.question
@@ -26,7 +22,7 @@ class answer(models.Model):
     question = models.ForeignKey('forum.Question' ,on_delete = models.CASCADE, related_name = 'answer')
     author = models.CharField(max_length = 50)
     answer = models.TextField()
-    votes = models.SmallIntegerField(default = 0)
+    votes_count = models.SmallIntegerField(default = 0)
     added_date = models.DateTimeField()
 
     def __str__(self):
@@ -38,3 +34,10 @@ class answer(models.Model):
     def addTime(self):
         self.added_date = timezone.now()
 
+class Votes(models.Model):
+    question = models.ForeignKey('forum.Question' ,on_delete = models.CASCADE, related_name = 'votes')
+    voter = models.CharField(max_length = 50)
+    status = models.BooleanField(null = True, blank = True) #true for upvote and false for downvote and none for not voted
+
+    def __str__(self):
+        return self.voter
