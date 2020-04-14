@@ -6,7 +6,7 @@
         <div class = "col-2" id="votes_col_div">
             <div id ="votes_div">
                 <a href="{% url 'addVote' pk=question.pk %}"> <span class="fas fa-caret-up"></span><br></a>
-                <span id="votes">{{ question.votes }}<br></span>
+                <span id="votes">{{ question.votes_count }}<br></span>
                 <a href="{% url 'subVote' pk=question.pk %}"> <span class="fas fa-caret-down"></span><br></a>
             </div>
         </div>
