@@ -54,3 +54,10 @@ p{
     width: 300px;
     left: 500px;
 }
+
+.register_div{
+    position: absolute;
+    width: 600px;
+    left: 250px;
+    padding-bottom: 200px;
+}
