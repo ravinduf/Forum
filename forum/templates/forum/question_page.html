@@ -7,14 +7,19 @@
         <div class = "col-2" id="votes_col_div">
             <div id ="votes_div">
                 {% if user.is_authenticated %}
-                <a href="{% url 'addVote' pk=question.pk %}"> <span class="fas fa-caret-up"></span><br></a>
-                {% endif %}
-                <span class="fas fa-caret-up" onclick="alert('you have to be logged in to vote')"></span><br>
+                <a href="{% url 'addVote' pk=question.pk %}"> <span class="fas fa-caret-up"></span></a>
+                {% else %}
+                <span class="fas fa-caret-up" onclick="alert('you have to be logged in to vote')"></span>
+                {% endif%}
+                <br>
                 <span id="votes">{{ question.votes_count }}<br></span>
+
                 {% if user.is_authenticated %}
-                <a href="{% url 'subVote' pk=question.pk %}"> <span class="fas fa-caret-down"></span><br></a>
+                <a href="{% url 'subVote' pk=question.pk %}"> <span class="fas fa-caret-down"></span></a>
+                {% else %}
+                <span class="fas fa-caret-down" onclick=" alert('you have to be logged in to vote')"></span>
                 {% endif %}
-                <span class="fas fa-caret-down" onclick=" alert('you have to be logged in to vote')"></span><br>
+                <br>
             </div>
         </div>
         <div class = "col-8">
