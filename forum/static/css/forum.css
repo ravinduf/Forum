@@ -49,6 +49,8 @@ p{
     bottom: 20px;
 }
 
-.ask_question_span a{
-   
+.login_div{
+    position: absolute;
+    width: 300px;
+    left: 500px;
 }
