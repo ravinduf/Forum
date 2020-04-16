@@ -11,6 +11,19 @@ def index(request):
 def question_info(request, pk):
     question = get_object_or_404(Question, pk=pk)
     form = answerForm()
+    v = Votes.objects.filter(voter = request.user.username, question = question)
+    status = None
+    if v.count() == 0:
+        status = None
+    elif v.count() == 1:
+        v = Votes.objects.get(voter = request.user.username, question = question)
+        if v.status == True:
+            status = True
+        elif v.status == False:
+            status = False
+        else:
+            status == None    
+
 
     if request.method == 'POST':
         form = answerForm(request.POST)
@@ -23,7 +36,7 @@ def question_info(request, pk):
             return HttpResponseRedirect("")
         else:
             return HttpResponse('hello world')
-    return render(request, 'forum/question_page.html',{ 'question': question , 'form': form} )
+    return render(request, 'forum/question_page.html',{ 'question': question , 'form': form, 'status': status} )
 
 def addVote(request,pk):
     question = get_object_or_404 (Question, pk=pk)
