@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'register.apps.RegisterConfig',
     'forum.apps.ForumConfig',
     'crispy_forms',
+    #'ckeditor',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -125,3 +126,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
