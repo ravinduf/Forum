@@ -60,6 +60,7 @@
  <br>
  <br>
  <br>
+{% if user.is_authenticated %}
 <div class = "container">
     <form method = "POST" >{% csrf_token %}
         {{ form.answer|as_crispy_field }}
@@ -67,4 +68,9 @@
         <button class = "btn btn-primary" type = "submit">Submit</button>
     </form>
 </div>
+{% else%}
+<div class = "container">
+    <p>You have to be logged in to answer</p>
+</div>
+{% endif %}
 {% endblock %}
