@@ -72,3 +72,8 @@ p{
     width: 400px;
     
 }
+
+.question_delete_btn{
+    position: absolute;
+    right: 0px;
+}
