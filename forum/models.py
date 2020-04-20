@@ -5,12 +5,13 @@ from django.utils import timezone
 
 class Question(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL ,on_delete = models.CASCADE)
+    title = models.CharField(max_length=200,blank = True, null = True)
     question = models.TextField()
     votes_count = models.SmallIntegerField(default = 0)
     added_date = models.DateTimeField()
     
     def __str__(self):
-        return self.question
+        return self.title
 
     def vote(self):
         self.Votes += 1

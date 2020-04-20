@@ -19,10 +19,15 @@ p{
     margin-left: 30px; 
 }
 
+.question_title_h2{
+    font-family: 'Gotu', sans-serif;
+    font-size: 40px;
+    padding: 10px 20px;
+}
 .question{
     font-family: 'Gotu', sans-serif;
-    font-size: 30px;
-    padding: 20px;
+    font-size: 20px;
+    padding: 0px 20px ;
     
 }
 
