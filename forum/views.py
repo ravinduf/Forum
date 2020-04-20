@@ -111,3 +111,8 @@ def addQuestion(request):
     else:
         form = questionForm()
         return render(request, 'forum/add_question.html',{'form' : form})
+
+def questionDelete(request, pk):
+    question = get_object_or_404(Question, pk=pk)
+    question.delete()
+    return redirect('/')

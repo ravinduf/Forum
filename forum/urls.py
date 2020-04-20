@@ -8,4 +8,5 @@ urlpatterns = [
     path('addVote/<int:pk>', views.addVote, name = "addVote"),
     path('subVote/<int:pk>', views.subVote, name = "subVote"),
     path('addQuestion', views.addQuestion, name = "addQuestion"),
+    path('questionDelete/<int:pk>', views.questionDelete, name = "questionDelete")
 ]
