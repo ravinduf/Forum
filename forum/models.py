@@ -19,7 +19,7 @@ class Question(models.Model):
         self.added_date = timezone.now()
 
 class answer(models.Model):
-    question = models.ForeignKey('forum.Question' ,on_delete = models.CASCADE, related_name = 'answer')
+    question = models.ForeignKey('forum.Question' ,on_delete = models.PROTECT, related_name = 'answer')
     author = models.CharField(max_length = 50)
     answer = models.TextField()
     votes_count = models.SmallIntegerField(default = 0)
