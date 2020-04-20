@@ -1,14 +1,14 @@
 {% extends 'forum/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>Create an Account</h1>
+<h2>Create an Account</h2>
 
 <div class="register_div">
     <form method="POST">{% csrf_token %}
         {{form.username|as_crispy_field}}
         {{form.email|as_crispy_field}}
-        {{form.password1|as_crispy_field}}
-        {{form.password2|as_crispy_field}}
+        <div class='password_register_div'>{{form.password1|as_crispy_field}}
+        {{form.password2|as_crispy_field}}</div>
         <button type="submit" class="btn btn-success">Register</button>
     </form>
 </div>

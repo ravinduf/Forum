@@ -5,10 +5,11 @@
     box-sizing: border-box;
 }
 
-h1{
+h1,h2{
     text-align: center;
     font-family: 'Gotu', sans-serif;
 }
+
 
 p{
     font-family: 'Gotu', sans-serif;;
@@ -22,12 +23,12 @@ p{
 .question_title_h2{
     font-family: 'Gotu', sans-serif;
     font-size: 40px;
-    padding: 10px 20px;
+    padding: 10px 0px;
 }
 .question{
     font-family: 'Gotu', sans-serif;
     font-size: 20px;
-    padding: 0px 20px ;
+    padding-left: 20px ;
     
 }
 
@@ -65,4 +66,9 @@ p{
     width: 600px;
     left: 250px;
     padding-bottom: 200px;
+}
+
+.password_register_div{
+    width: 400px;
+    
 }
