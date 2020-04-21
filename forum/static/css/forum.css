@@ -17,7 +17,7 @@ p{
 
 .answers{
     font-family: 'Gotu', sans-serif;
-    margin-left: 30px; 
+    margin-left: 100px; 
 }
 
 .question_title_h2{
@@ -77,3 +77,4 @@ p{
     position: absolute;
     right: 0px;
 }
+
