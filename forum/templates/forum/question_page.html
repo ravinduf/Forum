@@ -7,27 +7,29 @@
     <div class = "row ">
         <div class = "col-2" id="votes_col_div">
             <div id ="votes_div">
-                {% if user.is_authenticated  %}
+                
+                {% if user.is_authenticated and user != request.user %}
                     {% if status == False or status == None%}
                         <a href="{% url 'addVote' pk=question.pk %}"><span class="fas fa-caret-up"></span></a>
                     {% else%}
                         <span class="fas fa-caret-up"></span>
                     {% endif %}
                 {% else %}
-                <span class="fas fa-caret-up" onclick="alert('you have to be logged in to vote')"></span>
+                <span class="fas fa-caret-up" onclick="alert('Sorry you can\'t vote beacuse either you posted the question or you are not logged in !')"></span>
                 {% endif%}
                 <br>
                 <span id="votes">{{ question.votes_count }}<br></span>
 
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated  and question.author != request.user %}
                     {% if status == True or status == None %}
                         <a href="{% url 'subVote' pk=question.pk %}"> <span class="fas fa-caret-down"></span></a>
                     {% else %}
                     <span class="fas fa-caret-down"></span>
                     {% endif %}
                 {% else %}
-                <span class="fas fa-caret-down" onclick=" alert('you have to be logged in to vote')"></span>
+                <span class="fas fa-caret-down" onclick=" alert('Sorry you can\'t vote beacuse either you posted the question or you are not logged in !')"></span>
                 {% endif %}
+                
                 <br>
             </div>
         </div>
@@ -61,7 +63,7 @@
  <br>
  <br>
  <br>
-{% if user.is_authenticated %}
+{% if user.is_authenticated and question.author != request.user %}
 <div class = "container">
     <form method = "POST" >{% csrf_token %}
         {{ form.answer|as_crispy_field }}
@@ -69,9 +71,13 @@
         <button class = "btn btn-primary" type = "submit">Submit</button>
     </form>
 </div>
-{% else%}
+{% elif question.author == request.user %}
+<div class = "container-md">
+    <p>You can't answer to the question you posted</p>
+</div>
+{% else %}
 <div class = "container">
-    <p>You have to be logged in to answer</p>
+    <p>You have to logged in to answer</p>
 </div>
 {% endif %}
 {% endblock %}
