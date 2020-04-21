@@ -116,3 +116,9 @@ def questionDelete(request, pk):
     question = get_object_or_404(Question, pk=pk)
     question.delete()
     return redirect('/')
+
+def answerDelete(request, pk):
+    ans = get_object_or_404(answer, pk=pk )
+    question = ans.question
+    ans.delete()
+    return redirect('question_details', pk = question.pk )

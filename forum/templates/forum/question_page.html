@@ -46,15 +46,16 @@
     <br><br>
 
 
-    <p>answers for the question are</p>
+   
 
     <div class = "answers">
     {% for answer in question.answer.all %}
         <b>{{answer.author}}</b>
         {{answer.answer|linebreaks}}
-        {% if answer.author == request.user%}
-            <a href="{% url 'answerDelete' pk=answer.pk %}">Delete</a>
+        {% if request.user.username == answer.author %}        
+            <a href="{% url 'answerDelete' pk=answer.pk %}"><button class="btn btn-Danger btn-sm">Delete</button></a>
         {% endif %}
+        <br>
     {% empty %}
         <p>No answers here yet </p>
     {% endfor %}
