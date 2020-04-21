@@ -8,7 +8,7 @@
         <div class = "col-2" id="votes_col_div">
             <div id ="votes_div">
                 
-                {% if user.is_authenticated and user != request.user %}
+                {% if user.is_authenticated and question.author != request.user %}
                     {% if status == False or status == None%}
                         <a href="{% url 'addVote' pk=question.pk %}"><span class="fas fa-caret-up"></span></a>
                     {% else%}
@@ -52,7 +52,9 @@
     {% for answer in question.answer.all %}
         <b>{{answer.author}}</b>
         {{answer.answer|linebreaks}}
-
+        {% if answer.author == request.user%}
+            <a href="{% url 'answerDelete' pk=answer.pk %}">Delete</a>
+        {% endif %}
     {% empty %}
         <p>No answers here yet </p>
     {% endfor %}
@@ -72,7 +74,7 @@
     </form>
 </div>
 {% elif question.author == request.user %}
-<div class = "container-md">
+<div class = "container">
     <p>You can't answer to the question you posted</p>
 </div>
 {% else %}
