@@ -127,9 +127,9 @@ def answerDelete(request, pk):
 def addAnswerVote(request, pk):
     ans = get_object_or_404 (answer, pk=pk)
     question = ans.question
-    v = answerVotes.objects.filter(voter = request.user.username, answer = ans)
+    v = answerVotes.objects.filter(voter = request.user.username, answer = ans, question = question)
     if v.count() == 0:
-        v = answerVotes.objects.create(answer = ans, voter = request.user.username)
+        v = answerVotes.objects.create(answer = ans, question = question, voter = request.user.username)
         v.status = True
         v.save()
         ans.votes_count += 1
@@ -138,30 +138,29 @@ def addAnswerVote(request, pk):
                                                                 #always remember to give simillar names for them
 
     elif v.count() == 1:
-        v = answerVotes.objects.get(voter = request.user.username, answer = ans)
+        v = answerVotes.objects.get(voter = request.user.username, question = question, answer = ans)
         status = v.status
         if status == False:
             v.status = None
-            question.votes_count += 1
+            ans.votes_count += 1
             
         elif status == None:
             v.status = True
-            question.votes_count += 1
-
+            ans.votes_count += 1
+        
         
         v.save()
         ans.save()
         return redirect('question_details', pk = question.pk)
     
-    else:
-        return redirect('question_details', pk = question.pk)
+    
 
 def subAnswerVote(request, pk):
     ans = get_object_or_404 (answer, pk=pk)
     question = ans.question
-    v = answerVotes.objects.filter(voter = request.user.username, answer = ans)
+    v = answerVotes.objects.filter(voter = request.user.username, question = question, answer = ans)
     if v.count() == 0:
-        v = answerVotes.objects.create(question = question, voter = request.user.username)
+        v = answerVotes.objects.create(question = question, answer = ans, voter = request.user.username)
         v.status = False
         v.save()
         ans.votes_count -= 1
@@ -177,6 +176,7 @@ def subAnswerVote(request, pk):
         elif status == None:
             v.status = False
             ans.votes_count -= 1
+
         v.save()
         ans.save()
         return redirect('question_details', pk = question.pk)
