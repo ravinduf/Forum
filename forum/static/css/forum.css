@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Gotu&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -15,10 +16,7 @@ p{
     font-family: 'Gotu', sans-serif;;
 }
 
-.answers{
-    font-family: 'Gotu', sans-serif;
-    margin-left: 100px; 
-}
+
 
 .question_title_h2{
     font-family: 'Gotu', sans-serif;
@@ -46,13 +44,22 @@ p{
 }
 
 #header{
-    position: relative;
+    position: relative;    
+}
+
+.head_base{
+    position: absolute;
+    left: 550px;
+    bottom: 20px;
+    padding-top: 50px;
+    
+    margin-top: 50px;
 }
 
 .ask_question_span{
     position: absolute;
     right: 50px;
-    bottom: 20px;
+    bottom: 35px;
 }
 
 .login_div{

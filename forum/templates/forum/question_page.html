@@ -48,21 +48,36 @@
 
     <p style="margin-left: 50px;">answers for the question are</p>
 
-    <div class = "answers">
+    
+    
     {% for answer in question.answer.all %}
-        <b>{{answer.author}}</b>
-        {{answer.answer|linebreaks}}
-        {% if request.user.username == answer.author %}        
-            <a href="{% url 'answerDelete' pk=answer.pk %}"><button class="btn btn-Danger btn-sm">Delete</button></a>
-        {% endif %}
+        <div class="container">
+            <div class="row">
+
+                <div class="col-2" >
+                    {{ answer.votes_count}}<br>
+                </div>
+
+                <div class="col-8">
+                    <b>{{answer.author}}</b><br>
+                    {{answer.answer|linebreaks}}
+                    {% if request.user.username == answer.author %}        
+                        <a href="{% url 'answerDelete' pk=answer.pk %}"><button class="btn btn-Danger btn-sm">Delete</button></a>
+                    {% endif %}
+                </div>
+
+            </div>  
+            
+        </div>
+        
         <br>
     {% empty %}
         <p>No answers here yet </p>
     {% endfor %}
 
-    </div>
+        
 
-</div>
+
  <br>
  <br>
  <br>
