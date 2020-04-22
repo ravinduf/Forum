@@ -36,7 +36,7 @@ class answer(models.Model):
         self.added_date = timezone.now()
 
 class Votes(models.Model):
-    question = models.ForeignKey('forum.Question' ,on_delete = models.CASCADE, related_name = 'votes')
+    question = models.ForeignKey('forum.Question' ,on_delete = models.PROTECT, related_name = 'votes')
     voter = models.CharField(max_length = 50)
     status = models.BooleanField(null = True, blank = True) #true for upvote and false for downvote and none for not voted
 
@@ -44,7 +44,8 @@ class Votes(models.Model):
         return self.voter
 
 class answerVotes(models.Model):
-    answer = models.ForeignKey('forum.answer', on_delete = models.CASCADE, related_name = 'votes_answer')
+    answer = models.ForeignKey('forum.answer', on_delete = models.PROTECT, related_name = 'votes_answer')
+    question = models.ForeignKey('forum.Question', on_delete = models.PROTECT, related_name = 'votes_answer_question')
     voter = models.CharField(max_length = 50)
     status = models.BooleanField(null = True, blank = True)
 
