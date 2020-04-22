@@ -95,8 +95,8 @@ def subVote(request,pk):
         question.save()
         return redirect('question_details', pk = question.pk)
     
-    
-    return redirect('question_details', pk = question.pk)
+    else:
+        return redirect('question_details', pk = question.pk)
 
 def addQuestion(request):
     if request.method == 'POST':
@@ -124,7 +124,7 @@ def answerDelete(request, pk):
     return redirect('question_details', pk = question.pk )
 
 
-def addAnwerVote(request, pk):
+def addAnswerVote(request, pk):
     ans = get_object_or_404 (answer, pk=pk)
     question = ans.question
     v = answerVotes.objects.filter(voter = request.user.username, answer = ans)
@@ -138,7 +138,7 @@ def addAnwerVote(request, pk):
                                                                 #always remember to give simillar names for them
 
     elif v.count() == 1:
-        v = answerVotes.objects.get(voter = request.user.username, question = question)
+        v = answerVotes.objects.get(voter = request.user.username, answer = ans)
         status = v.status
         if status == False:
             v.status = None
@@ -149,6 +149,34 @@ def addAnwerVote(request, pk):
             question.votes_count += 1
 
         
+        v.save()
+        ans.save()
+        return redirect('question_details', pk = question.pk)
+    
+    else:
+        return redirect('question_details', pk = question.pk)
+
+def subAnswerVote(request, pk):
+    ans = get_object_or_404 (answer, pk=pk)
+    question = ans.question
+    v = answerVotes.objects.filter(voter = request.user.username, answer = ans)
+    if v.count() == 0:
+        v = answerVotes.objects.create(question = question, voter = request.user.username)
+        v.status = False
+        v.save()
+        ans.votes_count -= 1
+        ans.save()
+        return redirect('question_details', pk = question.pk)
+    
+    elif v.count() == 1:
+        v = answerVotes.objects.get(voter = request.user.username, answer = ans)
+        status = v.status
+        if status == True:
+            v.status = None
+            ans.votes_count -= 1
+        elif status == None:
+            v.status = False
+            ans.votes_count -= 1
         v.save()
         ans.save()
         return redirect('question_details', pk = question.pk)

@@ -58,7 +58,7 @@
                     <div id="votes_div">
                         <a href="{% url 'addAnswerVote' pk=answer.pk %}"><span class="fas fa-caret-up"></span></a><br>
                             {{ answer.votes_count}}<br>
-                        <span class="fas fa-caret-down"></span>
+                        <a href="{% url 'subAnswerVote' pk=answer.pk %}"><span class="fas fa-caret-down"></span></a><br>
                     </div>
                 </div>
 

@@ -10,5 +10,6 @@ urlpatterns = [
     path('addQuestion', views.addQuestion, name = "addQuestion"),
     path('questionDelete/<int:pk>', views.questionDelete, name = "questionDelete"),
     path('answerDelete/<int:pk>', views.answerDelete, name = "answerDelete"),
-    path('addAnswerVote/<int:pk>', views.addAnwerVote, name = "addAnswerVote"),
+    path('addAnswerVote/<int:pk>', views.addAnswerVote, name = "addAnswerVote"),
+    path('subAnswerVote/<int:pk>', views.subAnswerVote, name = "subAnswerVote"),
 ]
