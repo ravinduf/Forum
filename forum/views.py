@@ -122,3 +122,36 @@ def answerDelete(request, pk):
     question = ans.question
     ans.delete()
     return redirect('question_details', pk = question.pk )
+
+
+def addAnwerVote(request, pk):
+    ans = get_object_or_404 (answer, pk=pk)
+    question = ans.question
+    v = answerVotes.objects.filter(voter = request.user.username, answer = ans)
+    if v.count() == 0:
+        v = answerVotes.objects.create(answer = ans, voter = request.user.username)
+        v.status = True
+        v.save()
+        ans.votes_count += 1
+        ans.save()
+        return redirect('question_details', pk = question.pk) #you have to give the urlpattern name instead of view function and 
+                                                                #always remember to give simillar names for them
+
+    elif v.count() == 1:
+        v = answerVotes.objects.get(voter = request.user.username, question = question)
+        status = v.status
+        if status == False:
+            v.status = None
+            question.votes_count += 1
+            
+        elif status == None:
+            v.status = True
+            question.votes_count += 1
+
+        
+        v.save()
+        ans.save()
+        return redirect('question_details', pk = question.pk)
+    
+    else:
+        return redirect('question_details', pk = question.pk)
