@@ -42,3 +42,11 @@ class Votes(models.Model):
 
     def __str__(self):
         return self.voter
+
+class answerVotes(models.Model):
+    answer = models.ForeignKey('forum.answer', on_delete = models.CASCADE, related_name = 'votes_answer')
+    voter = models.CharField(max_length = 50)
+    status = models.BooleanField(null = True, blank = True)
+
+    def __str__(self):
+        return self.voter
