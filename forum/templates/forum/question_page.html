@@ -57,7 +57,7 @@
                 <div class="col-2" id="votes_col_div">
                     <div id="votes_div">
                         
-                        {% if answerDict|get_item:answer.answer != True and answerDict|len_dict > 0 %}
+                        {% if answerDict|get_item:answer.answer != True %}
                             <a href="{% url 'addAnswerVote' pk=answer.pk %}"><span class="fas fa-caret-up"></span></a><br>
                         {% else %}
                             <span class="fas fa-caret-up" onclick="alert('Sorry you can\'t vote because you are not logged in !')"></span><br>
@@ -65,7 +65,7 @@
 
                         {{ answer.votes_count}}<br>
                         
-                        {% if answerDict|get_item:answer.answer != False and answerDict|len_dict > 0 %}
+                        {% if answerDict|get_item:answer.answer != False  %}
                             <a href="{% url 'subAnswerVote' pk=answer.pk %}"><span class="fas fa-caret-down"></span></a><br>
                         {% else %}
                             <span class="fas fa-caret-down" onclick="alert('Sorry you can\'t vote because you are not logged in !')"></span><br>
