@@ -25,6 +25,14 @@ def question_info(request, pk):
             status == None    
 
 
+    av = answerVotes.objects.filter(voter = request.user.username, question = question)
+    answerDict = {}
+    if av.count() >= 1:
+        for i in av:
+            answerDict[str(i.answer.answer)] = i.status
+    
+    
+
     if request.method == 'POST':
         form = answerForm(request.POST)
         if form.is_valid():
@@ -36,7 +44,7 @@ def question_info(request, pk):
             return HttpResponseRedirect("")
         else:
             return HttpResponse('hello world')
-    return render(request, 'forum/question_page.html',{ 'question': question , 'form': form, 'status': status} )
+    return render(request, 'forum/question_page.html',{ 'question': question , 'form': form, 'status': status, 'answerDict': answerDict} )
 
 def addVote(request,pk):
     question = get_object_or_404 (Question, pk=pk)

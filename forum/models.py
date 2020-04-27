@@ -27,7 +27,7 @@ class answer(models.Model):
     added_date = models.DateTimeField()
 
     def __str__(self):
-        return self.answer
+        return str(self.answer)
     
     def vote(self):
         self.Votes += 1
