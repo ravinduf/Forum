@@ -60,7 +60,7 @@
                         {% if answerDict|get_item:answer.answer != True and answerDict|len_dict > 0 %}
                             <a href="{% url 'addAnswerVote' pk=answer.pk %}"><span class="fas fa-caret-up"></span></a><br>
                         {% else %}
-                            <span class="fas fa-caret-up"></span><br>
+                            <span class="fas fa-caret-up" onclick="alert('Sorry you can\'t vote because you are not logged in !')"></span><br>
                         {% endif %}
 
                         {{ answer.votes_count}}<br>
@@ -68,7 +68,7 @@
                         {% if answerDict|get_item:answer.answer != False and answerDict|len_dict > 0 %}
                             <a href="{% url 'subAnswerVote' pk=answer.pk %}"><span class="fas fa-caret-down"></span></a><br>
                         {% else %}
-                            <span class="fas fa-caret-down"></span><br>
+                            <span class="fas fa-caret-down" onclick="alert('Sorry you can\'t vote because you are not logged in !')"></span><br>
                         {% endif %}
                     </div>
                 </div>
