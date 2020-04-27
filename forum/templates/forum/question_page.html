@@ -53,19 +53,23 @@
     {% for answer in question.answer.all %}
         <div class="container p-3">
             <div class="row">
-                    <p>{{ answerDict|get_item:answer.answer }}</p>
+                    <
                 <div class="col-2" id="votes_col_div">
                     <div id="votes_div">
                         
-                        
-                        <a href="{% url 'addAnswerVote' pk=answer.pk %}"><span class="fas fa-caret-up"></span></a><br>
-                        
+                        {% if answerDict|get_item:answer.answer != True %}
+                            <a href="{% url 'addAnswerVote' pk=answer.pk %}"><span class="fas fa-caret-up"></span></a><br>
+                        {% else %}
+                            <span class="fas fa-caret-up"></span><br>
+                        {% endif %}
 
                         {{ answer.votes_count}}<br>
                         
-                        
-                        <a href="{% url 'subAnswerVote' pk=answer.pk %}"><span class="fas fa-caret-down"></span></a><br>
-                        
+                        {% if answerDict|get_item:answer.answer != False %}
+                            <a href="{% url 'subAnswerVote' pk=answer.pk %}"><span class="fas fa-caret-down"></span></a><br>
+                        {% else %}
+                            <span class="fas fa-caret-down"></span><br>
+                        {% endif %}
                     </div>
                 </div>
 
