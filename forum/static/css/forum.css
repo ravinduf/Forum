@@ -11,6 +11,17 @@ h1{
     font-family: 'Gotu', sans-serif;
 }
 
+h1 > a:link{
+    color: white;
+    
+}
+
+h1 > a:visited{
+    color: white;
+    
+    
+}
+
 
 p{
     font-family: 'Gotu', sans-serif;;
