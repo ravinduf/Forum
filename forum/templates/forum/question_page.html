@@ -79,6 +79,7 @@
                     {{answer.answer|linebreaks}}
                     {% if request.user.username == answer.author %}        
                         <a href="{% url 'answerDelete' pk=answer.pk %}"><button class="btn btn-Danger btn-sm">Delete</button></a>
+                        <a href="{% url 'editAnswer' pk=answer.pk %}"><button class="btn btn-Danger btn-sm">Edit</button></a>
                     {% endif %}
                 </div>
 
