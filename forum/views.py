@@ -198,8 +198,8 @@ def editQuestion(request, pk):
         form = questionForm(request.POST, instance = question)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('question_deatils', pk = question.pk)
 
     else:
         form = questionForm(instance = question)
-    return render(request, '', {'form': form})
+    return render(request, 'forum/editQuestion.html', {'form': form})
