@@ -37,8 +37,9 @@
             <h2 class="question_title">{{question}}</h2>
             <p class="question">{{question.question|linebreaks}}</p>
             {% if user.is_authenticated and question.author == request.user %}
-                <span class="question_delete_btn">
-                    <a href="{% url 'questionDelete' pk=question.pk %}"><button class='btn btn-Danger'>Delete</button></a></span>
+                <span class="question_btns"><a href="{% url 'questionDelete' pk=question.pk %}"><button class='btn btn-Danger'>Delete</button></a>
+                                                    <a href="{% url 'editQuestion' pk=question.pk %}"><button class='btn btn-primary'>Edit</button></a> 
+                </span>
             {% endif %}
             
         </div>

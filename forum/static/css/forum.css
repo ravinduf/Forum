@@ -13,13 +13,10 @@ h1{
 
 h1 > a:link{
     color: white;
-    
 }
 
 h1 > a:visited{
     color: white;
-    
-    
 }
 
 
@@ -91,7 +88,7 @@ p{
     
 }
 
-.question_delete_btn{
+.question_btns{
     position: absolute;
     right: 0px;
 }
