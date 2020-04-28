@@ -38,7 +38,7 @@
             <p class="question">{{question.question|linebreaks}}</p>
             {% if user.is_authenticated and question.author == request.user %}
                 <span class="question_btns"><a href="{% url 'questionDelete' pk=question.pk %}"><button class='btn btn-Danger btn-sm'>Delete</button></a>
-                                                    <a href="{% url 'editQuestion' pk=question.pk %}"><button class='btn btn-primary btn-sm'>Edit</button></a> 
+                                                    <a href="{% url 'editQuestion' pk=question.pk %}"><button class='btn btn-dark btn-sm'>Edit</button></a> 
                 </span>
             {% endif %}
             
@@ -79,7 +79,7 @@
                     {{answer.answer|linebreaks}}
                     {% if request.user.username == answer.author %}        
                         <a href="{% url 'answerDelete' pk=answer.pk %}"><button class="btn btn-Danger btn-sm">Delete</button></a>
-                        <a href="{% url 'editAnswer' pk=answer.pk %}"><button class="btn btn-Danger btn-sm">Edit</button></a>
+                        <a href="{% url 'editAnswer' pk=answer.pk %}"><button class="btn btn-dark btn-sm">Edit</button></a>
                     {% endif %}
                 </div>
 
