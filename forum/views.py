@@ -203,3 +203,15 @@ def editQuestion(request, pk):
     else:
         form = questionForm(instance = question)
     return render(request, 'forum/editQuestion.html', {'form': form})
+
+def editAnswer(request, pk):
+    ans = get_object_or_404(answer, pk = pk)
+    if request.method == "POST":
+        form = answerForm(request.POST, instance = ans)
+        if form.is_valid():
+            form.save()
+            return redirect('question_details', pk = ans.question.pk)
+        
+    else:
+        form = answerForm(instance = ans)
+    return render(request, '' , {'form': form})
