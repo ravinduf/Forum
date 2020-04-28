@@ -198,7 +198,7 @@ def editQuestion(request, pk):
         form = questionForm(request.POST, instance = question)
         if form.is_valid():
             form.save()
-            return redirect('question_deatils', pk = question.pk)
+            return redirect('question_details', pk = question.pk)
 
     else:
         form = questionForm(instance = question)
