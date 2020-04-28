@@ -37,8 +37,8 @@
             <h2 class="question_title">{{question}}</h2>
             <p class="question">{{question.question|linebreaks}}</p>
             {% if user.is_authenticated and question.author == request.user %}
-                <span class="question_btns"><a href="{% url 'questionDelete' pk=question.pk %}"><button class='btn btn-Danger'>Delete</button></a>
-                                                    <a href="{% url 'editQuestion' pk=question.pk %}"><button class='btn btn-primary'>Edit</button></a> 
+                <span class="question_btns"><a href="{% url 'questionDelete' pk=question.pk %}"><button class='btn btn-Danger btn-sm'>Delete</button></a>
+                                                    <a href="{% url 'editQuestion' pk=question.pk %}"><button class='btn btn-primary btn-sm'>Edit</button></a> 
                 </span>
             {% endif %}
             
@@ -58,7 +58,7 @@
                 <div class="col-2" id="votes_col_div">
                     <div id="votes_div">
                         
-                        {% if answerDict|get_item:answer.answer != True %}
+                        {% if user.is_authenticated and answerDict|get_item:answer.answer != True %}
                             <a href="{% url 'addAnswerVote' pk=answer.pk %}"><span class="fas fa-caret-up"></span></a><br>
                         {% else %}
                             <span class="fas fa-caret-up" onclick="alert('Sorry you can\'t vote because you are not logged in !')"></span><br>
@@ -66,7 +66,7 @@
 
                         {{ answer.votes_count}}<br>
                         
-                        {% if answerDict|get_item:answer.answer != False  %}
+                        {% if user.is_authenticated and answerDict|get_item:answer.answer != False  %}
                             <a href="{% url 'subAnswerVote' pk=answer.pk %}"><span class="fas fa-caret-down"></span></a><br>
                         {% else %}
                             <span class="fas fa-caret-down" onclick="alert('Sorry you can\'t vote because you are not logged in !')"></span><br>
