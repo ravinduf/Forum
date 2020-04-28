@@ -214,4 +214,5 @@ def editAnswer(request, pk):
         
     else:
         form = answerForm(instance = ans)
-    return render(request, '' , {'form': form})
+    return render(request, 'forum/editAnswer.html' , {'form': form})
+
