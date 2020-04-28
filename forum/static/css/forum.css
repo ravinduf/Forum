@@ -59,15 +59,14 @@ p{
     position: absolute;
     left: 560px;
     bottom: 20px;
-    padding-top: 50px;
+    top: 30px;
     
-    margin-top: 50px;
 }
 
 .ask_question_span{
     position: absolute;
     right: 50px;
-    bottom: 35px;
+    bottom: 30px;
 }
 
 .login_div{
