@@ -191,3 +191,15 @@ def subAnswerVote(request, pk):
     
     else:
         return redirect('question_details', pk = question.pk)
+
+def editQuestion(request, pk):
+    question = get_object_or_404(Question, pk = pk)
+    if request.method == "POST":
+        form = questionForm(request.POST, instance = question)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    else:
+        form = questionForm(instance = question)
+    return render(request, '', {'form': form})
