@@ -12,5 +12,6 @@ urlpatterns = [
     path('answerDelete/<int:pk>', views.answerDelete, name = "answerDelete"),
     path('addAnswerVote/<int:pk>', views.addAnswerVote, name = "addAnswerVote"),
     path('subAnswerVote/<int:pk>', views.subAnswerVote, name = "subAnswerVote"),
-    path('editQuestion/<int:pk>', views.editQuestion, name= "editQuestion"),
+    path('editQuestion/<int:pk>', views.editQuestion, name = "editQuestion"),
+    path('editAnswer/<int:pk>', views.editAnswer, name = "editAnswer"),
 ]
