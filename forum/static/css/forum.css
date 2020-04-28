@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-h1,h2{
+h1{
     text-align: center;
     font-family: 'Gotu', sans-serif;
 }
@@ -57,7 +57,7 @@ p{
 
 .head_base{
     position: absolute;
-    left: 550px;
+    left: 560px;
     bottom: 20px;
     padding-top: 50px;
     
@@ -93,3 +93,9 @@ p{
     right: 0px;
 }
 
+.edit_div{
+    position: absolute;
+    width: 700px;
+    left: 350px;
+    margin-top: 20px;
+}
